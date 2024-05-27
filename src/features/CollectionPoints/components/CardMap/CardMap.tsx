@@ -1,10 +1,9 @@
-import { Box, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import ButtonAppBar from "../../../../shared/components/AppBar/AppBar";
 import { BoxStyled } from "../../CollectionPoints.style";
 import PinDropOutlinedIcon from "@mui/icons-material/PinDropOutlined";
 import { CardStyled } from "./CardMap.style";
-import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined';
-
+import KeyboardBackspaceOutlinedIcon from "@mui/icons-material/KeyboardBackspaceOutlined";
 
 interface CardMapProps {
   imageSrc: string;
@@ -23,10 +22,14 @@ export const CardMap = ({
     <Box>
       <ButtonAppBar />
       <BoxStyled>
-      <KeyboardBackspaceOutlinedIcon sx={{alignSelf:"start", color:"#fff"}}/>
+        <KeyboardBackspaceOutlinedIcon
+          sx={{ alignSelf: "start", color: "#fff" }}
+        />
         <img src={imageSrc} />
         <CardStyled>
-          <PinDropOutlinedIcon sx={{alignSelf: 'end'}} />
+          <IconButton sx={{ alignSelf: "end" }} onClick={() => {}}>
+            <PinDropOutlinedIcon />
+          </IconButton>
           <Typography>
             <strong>Bairro: </strong>
             {neighborhood}

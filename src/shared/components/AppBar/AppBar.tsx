@@ -26,7 +26,7 @@ export default function ButtonAppBar() {
   };
 
   const handleCollectionPoints = () => {
-    navigate("/")
+    navigate("/points")
   }
   const handleActivities = () => {
     navigate("/activities")

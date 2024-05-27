@@ -1,14 +1,14 @@
-import { ButtonStyled } from './Button.style';
+import { ButtonStyled } from "./Button.style";
 
 interface ButtonProps {
-    title: string;
-    isLoading: boolean
+  title: string;
+  isLoading: boolean;
+  onClick: () => void;
 }
-export const Button = ({title, isLoading}: ButtonProps) => {
+export const Button = ({ title, isLoading, onClick }: ButtonProps) => {
   return (
-    <ButtonStyled loading={isLoading} variant="outlined">
-        {title}
+    <ButtonStyled loading={isLoading} variant="outlined" onClick={onClick}>
+      {title}
     </ButtonStyled>
-  )
-}
-
+  );
+};

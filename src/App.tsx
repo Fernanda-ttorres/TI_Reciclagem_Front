@@ -12,9 +12,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login/>}/>
+        <Route path='/' element={<Login/>}/>
         <Route path='/forgotPassword' element={<ForgotPassword/>}/>
-        <Route path='/' element={<CollectionPoints/>}/>
+        <Route path='/points' element={<CollectionPoints/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/activities' element={<AddActivities/>}/>
         <Route path='/students' element={<AddStudents/>}/>
