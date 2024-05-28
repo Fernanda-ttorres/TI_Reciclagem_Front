@@ -5,19 +5,18 @@ import PinDropOutlinedIcon from "@mui/icons-material/PinDropOutlined";
 import { CardStyled } from "./CardMap.style";
 import KeyboardBackspaceOutlinedIcon from "@mui/icons-material/KeyboardBackspaceOutlined";
 
-interface CardMapProps {
-  imageSrc: string;
-  neighborhood: string;
+export interface DataItem {
   address: string;
-  residue: string;
+  neighborhood: string;
+  region: string;
 }
 
-export const CardMap = ({
-  imageSrc,
-  neighborhood,
-  address,
-  residue,
-}: CardMapProps) => {
+interface CardMapProps {
+  imageSrc: string;
+  data?: DataItem[];
+}
+
+export const CardMap = ({ imageSrc, data }: CardMapProps) => {
   return (
     <Box>
       <ButtonAppBar />
@@ -26,23 +25,21 @@ export const CardMap = ({
           sx={{ alignSelf: "start", color: "#fff" }}
         />
         <img src={imageSrc} />
-        <CardStyled>
-          <IconButton sx={{ alignSelf: "end" }} onClick={() => {}}>
-            <PinDropOutlinedIcon />
-          </IconButton>
-          <Typography>
-            <strong>Bairro: </strong>
-            {neighborhood}
-          </Typography>
-          <Typography>
-            <strong>Endereço: </strong>
-            {address}
-          </Typography>
-          <Typography>
-            <strong>Tipos de resíduos: </strong>
-            {residue}
-          </Typography>
-        </CardStyled>
+        {data?.map((d, index) => (
+          <CardStyled key={index}>
+            <IconButton sx={{ alignSelf: "end" }} onClick={() => {}}>
+              <PinDropOutlinedIcon />
+            </IconButton>
+            <Typography>
+              <strong>Bairro: </strong>
+              {d.neighborhood}
+            </Typography>
+            <Typography>
+              <strong>Endereço: </strong>
+              {d.address}
+            </Typography>
+          </CardStyled>
+        ))}
       </BoxStyled>
     </Box>
   );

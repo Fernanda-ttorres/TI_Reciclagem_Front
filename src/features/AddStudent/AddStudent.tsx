@@ -8,7 +8,6 @@ import { Input } from "../../shared/components/Input/Input";
 import useAddStudentService from "./hooks/useAddStudentService";
 import TaskAltOutlinedIcon from "@mui/icons-material/TaskAltOutlined";
 
-
 export const AddStudents = () => {
   const [name, setName] = useState("");
   const [registration, setRegistration] = useState("");
@@ -29,6 +28,14 @@ export const AddStudents = () => {
   const handleSubmit = () => {
     addStudent(name, serie, team, registration);
   };
+
+  const handleCancel = () => {
+    setName("");
+    setSerie("");
+    setRegistration("");
+    setTeam("");
+  };
+
   return (
     <Box
       sx={{
@@ -40,43 +47,63 @@ export const AddStudents = () => {
     >
       <ButtonAppBar />
       <BoxStyled>
-        <TypographyStyled>Cadastro Aluno</TypographyStyled>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "36px",
-          }}
-        >
-          <Input label={"Nome do Aluno"} type={"text"} value={name} onChange={handleNameChange}/>
-          <Input label={"Matrícula"} type={"text"} value={registration} onChange={handleRegistrationChange} />
-          <BasicSelect
-            label={"Serie"}
-            items={["1", "2", "3", "4", "5"]}
-            value={serie}
-            onChange={handleSerieChange}
-          />
-          <BasicSelect
-            label={"Turma"}
-            items={["A", "B", "C", "D", "E", "F"]}
-            value={team}
-            onChange={handleTeamChange}
-          />
-          <Container sx={{ display: "flex", gap: "32px" }}>
-            <Button title={"Cancelar"} isLoading={false} onClick={() => {}} />
-            <Button
-              title={"Salvar"}
-              isLoading={isLoading}
-              onClick={handleSubmit}
-            />
-          </Container>
-        </Box>
-        {success && (
-          <Box>
+        {success ? (
+          <Box sx={{ display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",}}>
             <TaskAltOutlinedIcon sx={{ fontSize: 100, color: "#1A4717" }} />
             <TypographyStyled>Salvo com Sucesso!</TypographyStyled>
           </Box>
+        ) : (
+          <>
+            <TypographyStyled>Cadastro Aluno</TypographyStyled>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "36px",
+              }}
+            >
+              <Input
+                label={"Nome do Aluno"}
+                type={"text"}
+                value={name}
+                onChange={handleNameChange}
+              />
+              <Input
+                label={"Matrícula"}
+                type={"text"}
+                value={registration}
+                onChange={handleRegistrationChange}
+              />
+              <BasicSelect
+                label={"Serie"}
+                items={["1", "2", "3", "4", "5"]}
+                value={serie}
+                onChange={handleSerieChange}
+              />
+              <BasicSelect
+                label={"Turma"}
+                items={["A", "B", "C", "D", "E", "F"]}
+                value={team}
+                onChange={handleTeamChange}
+              />
+              <Container sx={{ display: "flex", gap: "32px" }}>
+                <Button
+                  title={"Cancelar"}
+                  isLoading={false}
+                  onClick={handleCancel}
+                />
+                <Button
+                  title={"Salvar"}
+                  isLoading={isLoading}
+                  onClick={handleSubmit}
+                />
+              </Container>
+            </Box>
+          </>
         )}
       </BoxStyled>
     </Box>

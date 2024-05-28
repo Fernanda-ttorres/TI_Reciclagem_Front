@@ -27,6 +27,14 @@ export const AddActivities = () => {
   const handleSubmit = () => {
     addActivity(team, serie, student, ativity);
   };
+
+  const handleCancel = () => {
+    setAtivity("");
+    setSerie("");
+    setStudent("");
+    setTeam("");
+  };
+
   return (
     <Box
       sx={{
@@ -38,53 +46,67 @@ export const AddActivities = () => {
     >
       <ButtonAppBar />
       <BoxStyled>
-        <TypographyStyled>Cadastro de Atividades</TypographyStyled>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "36px",
-          }}
-        >
-          <BasicSelect
-            label={"Serie"}
-            items={["1", "2", "3", "4", "5"]}
-            value={serie}
-            onChange={handleSerieChange}
-          />
-          <BasicSelect
-            label={"Turma"}
-            items={["A", "B", "C", "D", "E", "F"]}
-            value={team}
-            onChange={handleTeamChange}
-          />
-          <Input
-            label={"Aluno"}
-            type={"text"}
-            value={student}
-            onChange={handleStudentChange}
-          />
-          <BasicSelect
-            label={"Tipo de Atividades"}
-            items={["Sustentabilidade", "Reciclagem"]}
-            value={ativity}
-            onChange={handleAtividadeChange}
-          />
-          <Container sx={{ display: "flex", gap: "32px" }}>
-            <Button title={"Cancelar"} isLoading={false} onClick={() => {}} />
-            <Button
-              title={"Salvar"}
-              isLoading={isLoading}
-              onClick={handleSubmit}
-            />
-          </Container>
-        </Box>
-        {success && (
-          <Box>
+        {success ? (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <TaskAltOutlinedIcon sx={{ fontSize: 100, color: "#1A4717" }} />
             <TypographyStyled>Salvo com Sucesso!</TypographyStyled>
           </Box>
+        ) : (
+          <>
+            <TypographyStyled>Cadastro de Atividades</TypographyStyled>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "36px",
+              }}
+            >
+              <BasicSelect
+                label={"Serie"}
+                items={["1", "2", "3", "4", "5"]}
+                value={serie}
+                onChange={handleSerieChange}
+              />
+              <BasicSelect
+                label={"Turma"}
+                items={["A", "B", "C", "D", "E", "F"]}
+                value={team}
+                onChange={handleTeamChange}
+              />
+              <Input
+                label={"Aluno"}
+                type={"text"}
+                value={student}
+                onChange={handleStudentChange}
+              />
+              <BasicSelect
+                label={"Tipo de Atividades"}
+                items={["Sustentabilidade", "Reciclagem"]}
+                value={ativity}
+                onChange={handleAtividadeChange}
+              />
+              <Container sx={{ display: "flex", gap: "32px" }}>
+                <Button
+                  title={"Cancelar"}
+                  isLoading={false}
+                  onClick={handleCancel}
+                />
+                <Button
+                  title={"Salvar"}
+                  isLoading={isLoading}
+                  onClick={handleSubmit}
+                />
+              </Container>
+            </Box>
+          </>
         )}
       </BoxStyled>
     </Box>

@@ -1,4 +1,15 @@
-import { Typography, styled } from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
+
+const BoxStyled = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #959b79;
+  border-radius: 20px;
+  padding: 24px;
+  gap: 18px;
+  height: 300px;
+`;
 
 const TypographyStyled = styled(Typography)`
   color: #034317;
@@ -14,8 +25,8 @@ const MinBoxStyled = styled(Typography)`
   justify-content: start;
   border-radius: 32px;
   padding: 8px;
-  background: linear-gradient(90deg, #1E4D1B 0%, #000 100%);
+  background: linear-gradient(90deg, #1e4d1b 0%, #000 100%);
   color: #fff;
 `;
 
-export { TypographyStyled, MinBoxStyled };
+export { TypographyStyled, MinBoxStyled, BoxStyled };
