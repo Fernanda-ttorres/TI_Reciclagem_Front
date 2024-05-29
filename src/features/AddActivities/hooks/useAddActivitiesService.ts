@@ -1,20 +1,25 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { apiConfig } from '../../../config/apiConfig';
+import useLogin from '../../Login/Hooks/useLoginService';
 
 const useAddActivitiesService = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const { data } = useLogin();
 
-  const addActivity = async (serie: string, team: string, name: string, type: string) => {
+  const addActivity = async (team: string, serie: string, nome: string) => {
     setIsLoading(true);
     try {
-      await axios.post(`http://localhost:8080/api/atividades`, null, {
+      await axios.post(`${apiConfig.url}/api/atividades`, null, {
         params: {
-          serie,
           team,
-          name,
-          type,
+          serie,
+          nome,
         },
+        headers: {
+          Authorization: `Bearer ${data}`
+        }
       });
       setSuccess(true);
     } catch (error) {
@@ -22,6 +27,7 @@ const useAddActivitiesService = () => {
       setSuccess(false);
     } finally {
       setIsLoading(false);
+      setSuccess(true);
     }
   };
 

@@ -25,7 +25,7 @@ export const AddActivities = () => {
   const handleAtividadeChange = (event: any) => setAtivity(event.target.value);
 
   const handleSubmit = () => {
-    addActivity(team, serie, student, ativity);
+    addActivity(team, serie, student);
   };
 
   const handleCancel = () => {

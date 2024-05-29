@@ -1,5 +1,5 @@
 export const apiConfig = {
-  url: "http://ec2-54-84-221-217.compute-1.amazonaws.com:8080"
+  url: "http://ec2-44-211-227-93.compute-1.amazonaws.com:8080"
 }
 
 export const apiMaps = {

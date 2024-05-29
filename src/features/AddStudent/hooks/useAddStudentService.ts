@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
+import useLogin from "../../Login/Hooks/useLoginService";
 
 const useAddStudentService = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const { data } = useLogin();
 
   const addStudent = async (
     name: string,
@@ -20,6 +22,9 @@ const useAddStudentService = () => {
           serie,
           team,
         },
+        headers: {
+          Authorization: `Bearer ${data}`
+        }
       });
       setSuccess(true);
     } catch (error) {
@@ -27,6 +32,7 @@ const useAddStudentService = () => {
       setSuccess(false);
     } finally {
       setIsLoading(false);
+      setSuccess(true);
     }
   };
 

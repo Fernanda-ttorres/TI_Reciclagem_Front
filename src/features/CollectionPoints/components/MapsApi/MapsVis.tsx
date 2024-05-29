@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { Box, IconButton } from "@mui/material";
 import {
     APIProvider,
@@ -21,7 +21,6 @@ const positions = {
     arena: { position: { lat: -19.930649, lng: -44.017283 } },
     pampulha: { position: { lat: -19.859532, lng: -43.978412 } },
 }
-
 const locations: Poi[] = [
     { key: 'ArenaMRV', location: { lat: -19.930649, lng: -44.017283 } },
     { key: 'lagoaPampulha', location: { lat: -19.859532, lng: -43.978412 } },
@@ -110,4 +109,4 @@ export default function MapsVis() {
             </APIProvider>
         </Box>
     );
-};
+}
